@@ -24,5 +24,5 @@ Step 3:
   - Create a method stub
   - Create a test for that method
   - Implement the method
-  - Repeat for each element of the API.
+  - Repeat for each element of the API
 
