@@ -8,7 +8,7 @@ I intend to document the progress of this project in this ReadMe. My initial out
 ## Development plan (outline)
 
 Step 1:
-* Design the builder API:
+* Design the RegEx builder API:
   - List the elements of a RegEx the API needs to mirror
   - Design a fluent builder pattern API that allows these to be used intuitively, considering how other libraries have approached the problem
 
