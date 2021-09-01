@@ -14,7 +14,12 @@
 
 - Based on consideration of the similar libraries and APIs above, I've taken a number of preliminary design decisions:
   * The primary methods for creating a regex sub-expression will be "matching(...)" and "then(...)", taking a sub-expression as a parameter
-  * 
+  * Although the challenge with this is how to neatly start the method chain in the sub-expression
+  * The obvious answer would be another call to matching() but that makes the start of the expression matching(matching(...)...) which isn't very neat (although, with the use of identation, it could make the code easy to read).
+  * Extension methods for the string class could allow the strings to be used in the match to be extended directly, which might be neater, especially in simpler sub-expressions.
+  * The question of how to deal with invalid RegEx's is interesting. An easy solution would be to use an existing validation tool and either throw an exception or return null when the regEx is converted into a string if it's invalid.
+  * A basic but naive implementation involving each method modifying an internal regEx string is probably the best place to start, but for more complex elements I might need to replace that with a logical representation of the regEx using internal classes. This is particularly the case if I decide to implement features that attempt to optimise the regEx created in any way.
+  * Another example is if a sub-expression is assigned to a variable and then included in the chain multiple times, then ideally I'd capture it rather than re-including the full sub-expression - but that could prove challenging to implement.
 
 ## Classes/ Types
 
