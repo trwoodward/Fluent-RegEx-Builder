@@ -20,6 +20,7 @@
   * The question of how to deal with invalid RegEx's is interesting. An easy solution would be to use an existing validation tool and either throw an exception or return null when the regEx is converted into a string if it's invalid.
   * A basic but naive implementation involving each method modifying an internal regEx string is probably the best place to start, but for more complex elements I might need to replace that with a logical representation of the regEx using internal classes. This is particularly the case if I decide to implement features that attempt to optimise the regEx created in any way.
   * Another example is if a sub-expression is assigned to a variable and then included in the chain multiple times, then ideally I'd capture it rather than re-including the full sub-expression - but that could prove challenging to implement (note to self: would overloading the assignment operator to set an internal flag work?)
+  * Some methods may have to be accessible both statically and via instances to facilitate the fluency of the API
 
 ## Features
 
@@ -38,9 +39,8 @@
 
 ## Classes/ Types
 
-- RegExBuilder
-  * The main regex builder class
-- TBC (depedning on implementation)
+- RegExString
+  * Representing both the a regular expression string, and being the builder class for that string
 
 ## Properties
 
@@ -48,20 +48,36 @@
 
 ## Methods
 
-- RegExBuilder: string ToString()
+### Core methods
+- string RegExString.ToString()
   * Returns the string representation of the completed regular expression
-- RegExBuilder: RegExBuilder Matching(RegExBuilder subexpression)
+- static RegExString RegExString.Matching(RegExString subexpression), static RegExString RegExString.Matching(string matchString)
   * Creates a new expression/ sub-expression
-- RegExBulder: RegExBuilder Then(RegExBuilder subexpression)
+- RegExString Then(RegExString subexpression), RegExString Then(string matchString) //instance method - not static
   * Appends a new sub-expression
-  []
-- AnyAlphaNumeric
+
+### Character classes
+- static RegExString RegExString.AnyAlphaNumeric()
   * Represents an expression matching any word character (i.e. alphanumeric characters)
-- AnyNonAlphaNumeric
+- static RegExString RegExString.AnyNonAlphaNumeric()
   * Represents an expression matching any non-word character
-- AnyDigit
+- static RegExString RegExString.AnyDigit()
   * Represents an expression matching any base 10 digit (i.e. 0-9)
-- AnyNonDigit
+- static RegExString RegExString.AnyNonDigit()
   * Represents an expression matching any character other than a base 10 digit
-- AnySingleCharacter
-  * Represents an 
+- static RegExString RegExString.AnySingleCharacter()
+  * A wildcard representing any single character 
+- static RegExString RegExString.AnyCharIn(params char[] charGroup)
+  * Represents an expression matching any character in a specified set of characters
+- static RegExString RegExString.AnyCharNotIn(params char[] charGroup)
+  * Represents an expression matching any character not in a specified set of characters
+- static RegExString RegExString.AnyCharInRange(char first, char last)
+
+### Anchors
+- 
+
+### Quantifiers
+- 
+
+### Alternation
+- 
