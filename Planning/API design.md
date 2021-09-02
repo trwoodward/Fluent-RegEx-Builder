@@ -19,11 +19,22 @@
   * Extension methods for the string class could allow the strings to be used in the match to be extended directly, which might be neater, especially in simpler sub-expressions.
   * The question of how to deal with invalid RegEx's is interesting. An easy solution would be to use an existing validation tool and either throw an exception or return null when the regEx is converted into a string if it's invalid.
   * A basic but naive implementation involving each method modifying an internal regEx string is probably the best place to start, but for more complex elements I might need to replace that with a logical representation of the regEx using internal classes. This is particularly the case if I decide to implement features that attempt to optimise the regEx created in any way.
-  * Another example is if a sub-expression is assigned to a variable and then included in the chain multiple times, then ideally I'd capture it rather than re-including the full sub-expression - but that could prove challenging to implement.
+  * Another example is if a sub-expression is assigned to a variable and then included in the chain multiple times, then ideally I'd capture it rather than re-including the full sub-expression - but that could prove challenging to implement (note to self: would overloading the assignment operator to set an internal flag work?)
 
 ## Classes/ Types
 
--
+- Essential:
+  * Character classes (e.g. user defined character groups, 'words', whitespace characters, digits etc.)
+  * Anchors (e.g. the match must occur at the start, end, or at a boundary)
+  * Quantifiers (e.g. how many times an element must occur in the match)
+  * Alternation (e.g. 'either' and 'or')
+- Desireable:
+  * More complex versions of the groups above - e.g. conditional matching in the alternation group, quantifiers that match elements as few times as possible
+  * Substitutions
+  * Some optional parameters (e.g. case insensitivity)
+- Optional:
+  * Named and numbered captures
+  * Lookarounds
 
 ## Properties
 
