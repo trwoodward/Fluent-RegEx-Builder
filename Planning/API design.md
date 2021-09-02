@@ -21,7 +21,7 @@
   * A basic but naive implementation involving each method modifying an internal regEx string is probably the best place to start, but for more complex elements I might need to replace that with a logical representation of the regEx using internal classes. This is particularly the case if I decide to implement features that attempt to optimise the regEx created in any way.
   * Another example is if a sub-expression is assigned to a variable and then included in the chain multiple times, then ideally I'd capture it rather than re-including the full sub-expression - but that could prove challenging to implement (note to self: would overloading the assignment operator to set an internal flag work?)
 
-## Classes/ Types
+## Features
 
 - Essential:
   * Character classes (e.g. user defined character groups, 'words', whitespace characters, digits etc.)
@@ -35,6 +35,10 @@
 - Optional:
   * Named and numbered captures
   * Lookarounds
+
+## Classes/ Types
+
+- 
 
 ## Properties
 
