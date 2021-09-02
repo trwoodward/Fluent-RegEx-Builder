@@ -38,10 +38,30 @@
 
 ## Classes/ Types
 
-- 
+- RegExBuilder
+  * The main regex builder class
+- TBC (depedning on implementation)
 
 ## Properties
 
 - 
 
 ## Methods
+
+- RegExBuilder: string ToString()
+  * Returns the string representation of the completed regular expression
+- RegExBuilder: RegExBuilder Matching(RegExBuilder subexpression)
+  * Creates a new expression/ sub-expression
+- RegExBulder: RegExBuilder Then(RegExBuilder subexpression)
+  * Appends a new sub-expression
+  []
+- AnyAlphaNumeric
+  * Represents an expression matching any word character (i.e. alphanumeric characters)
+- AnyNonAlphaNumeric
+  * Represents an expression matching any non-word character
+- AnyDigit
+  * Represents an expression matching any base 10 digit (i.e. 0-9)
+- AnyNonDigit
+  * Represents an expression matching any character other than a base 10 digit
+- AnySingleCharacter
+  * Represents an 
