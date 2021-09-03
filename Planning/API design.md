@@ -86,7 +86,18 @@
   * Modifies the current sub-expression so that the match must NOT be at the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
 
 ### Quantifiers
-- 
+- RegExString RegExString.ZeroOrMoreTimes()
+  * Modifies the current sub-expression so it will be matched zero or more times
+- RegExString RegExString.AtLeastOnce()
+  * Modifies the current sub-expression so it will be matched one or more times
+- RegEXString RegExString.AtMostOnce()
+  * Modifies the current sub-expression so it will be matched zero or one time
+- RegExString RegExString.NTimes(int n)
+  * Modifies the current sub-expression so it will be matched exactly n times
+- RegExString RegExString.AtLeastNTimes(int n)
+  * Modifies the current sub-expression so it will be matched at least n times
+- RegExString RegExString.BetweenNAndMTimes(int n, int m)
+  * Modifies the current sub-expression so it will be matched at least n times, but no more than m times
 
 ### Alternation
 - 
