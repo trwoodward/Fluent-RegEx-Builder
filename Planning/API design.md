@@ -42,10 +42,6 @@
 - RegExString
   * Representing both the a regular expression string, and being the builder class for that string
 
-## Properties
-
-- 
-
 ## Methods
 
 ### Core methods
@@ -80,10 +76,18 @@
   * Modifies the current sub-expression so that the match must be at the end of the string (or before a newline at the end of the string)
 - RegExString RegExString.AfterPreviousMatch()
   * Modifies the current sub-expression so that the match must be after the last match
-- RegExString RegExString.AtWordBoundary()
-  * Modifies the current sub-expression so that the match must be at the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
-- RegExString RegExString.NotAtWordBoundary()
-  * Modifies the current sub-expression so that the match must NOT be at the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
+- RegExString RegExString.AtStartOfWord()
+  * Modifies the current sub-expression so that the match must be immediatly after a boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
+- RegExString RegExString.AtEndOfWord()
+  * Modifies the current sub-expression so that the match must be immediatly before a boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
+- RegExString RegExString.AsAWholeWord()
+  * Modifies the current sub-expression so that the match must be both immediatly before and immediately after a boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
+- RegExString RegExString.NotAtStartOfWord()
+  * Modifies the current sub-expression so that the match must NOT be immediately after the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
+- RegExString RegExString.NotAtEndOfWord()
+  * Modifies the current sub-expression so that the match must NOT be immediately before the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
+- RegExString RegExString.InMiddleOfWord()
+  * Modifies the current sub-expression so that the match must NOT be immediately before or after the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
 
 ### Quantifiers
 - RegExString RegExString.ZeroOrMoreTimes()
