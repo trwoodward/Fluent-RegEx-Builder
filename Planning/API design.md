@@ -106,3 +106,9 @@
 ### Alternation
 - RegExString RegExString.Or()
   * Modifies the current expression so that it matches provided the sub-expression to the left of the 'Or()' call or the sub-expression to the right of it matches
+
+### Options
+- RegExString RegExString.CaseInsensitive()
+  * Modifies all subsequent parts of the current expression to make matches case insensitive (Implementation note: If used in a sub-expression it should automatically be reversed at the end of that sub-expression)
+- RegExString RegExString.CaseSensitive()
+  * Modifies all subsequent parts of the current expression ot make matches case senstive (Implementation note: As this is the default, it should only make a change if the current expression is currently case insenstive, including where this has been inherited from the parent expression)
