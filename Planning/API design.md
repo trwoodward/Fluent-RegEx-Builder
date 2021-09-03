@@ -74,7 +74,16 @@
 - static RegExString RegExString.AnyCharInRange(char first, char last)
 
 ### Anchors
-- 
+- RegExString RegExString.AtTheStart()
+  * Modifies the current sub-expression so that the match must be at the beginning of the string
+- RegExString RegExString.AtTheEnd()
+  * Modifies the current sub-expression so that the match must be at the end of the string (or before a newline at the end of the string)
+- RegExString RegExString.AfterPreviousMatch()
+  * Modifies the current sub-expression so that the match must be after the last match
+- RegExString RegExString.AtWordBoundary()
+  * Modifies the current sub-expression so that the match must be at the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
+- RegExString RegExString.NotAtWordBoundary()
+  * Modifies the current sub-expression so that the match must NOT be at the boundary between an alphanumeric character and a non-alphanumeric character, e.g. a whitespace
 
 ### Quantifiers
 - 
