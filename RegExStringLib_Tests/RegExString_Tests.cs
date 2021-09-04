@@ -18,5 +18,19 @@ namespace RegExStringLib_Tests
             //Assert
             Assert.Equal("", result);
         }
+
+        [Fact]
+        public void ToString_WithRandomContent_ReturnsMatchingContent()
+        {
+            //Arrange
+            string testString = Guid.NewGuid().ToString();
+            RegExString expression = new RegExString(testString);
+
+            //Act
+            string result = expression.ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
     }
 }

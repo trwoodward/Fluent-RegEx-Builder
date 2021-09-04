@@ -5,7 +5,15 @@ namespace RegExStringLib
     public class RegExString
     {
         //Internal variables
-        private string currentString = "";
+        private string currentString;
+
+        //Constructors
+        public RegExString(string matchString)
+        {
+            currentString = matchString;
+        }
+
+        public RegExString() : this("") {}
 
         //Conversion operators
         public override string ToString() => currentString;
