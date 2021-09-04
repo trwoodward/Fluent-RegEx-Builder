@@ -5,7 +5,7 @@ namespace RegExStringLib
     public class RegExString
     {
         //Internal variables
-        private string currentString;
+        private string currentString = "";
 
         //Conversion operators
         public override string ToString() => currentString;
