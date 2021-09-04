@@ -1,9 +1,0 @@
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/bin/Debug/netstandard2.0/RegExStringLib.deps.json
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/bin/Debug/netstandard2.0/RegExStringLib.dll
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/bin/Debug/netstandard2.0/RegExStringLib.pdb
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/obj/Debug/netstandard2.0/RegExStringLib.csprojAssemblyReference.cache
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/obj/Debug/netstandard2.0/RegExStringLib.AssemblyInfoInputs.cache
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/obj/Debug/netstandard2.0/RegExStringLib.AssemblyInfo.cs
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/obj/Debug/netstandard2.0/RegExStringLib.csproj.CoreCompileInputs.cache
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/obj/Debug/netstandard2.0/RegExStringLib.dll
-/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/obj/Debug/netstandard2.0/RegExStringLib.pdb
