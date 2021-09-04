@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "cVdtYgE8/TM1/lYVhnWsxUA/SPjCWRO6N+UWJod/GEmhwR/x111BXSBhfbu00DqWjkUCueY7KAxEyMX0Xke8hw==",
+  "dgSpecHash": "A+9T2PSEVa3JAYJ8DunE3MMp0o2/p+OevTOU6+LY9FXOMCbC0j3fjJulaTRCRVXRkZCq8EeandsnRL7K4gCf2A==",
   "success": true,
-  "projectFilePath": "/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/RegExStringLib.csproj",
+  "projectFilePath": "D:\\Files\\RegExBuilder\\Fluent-RegEx-Builder\\RegExStringLib\\RegExStringLib.csproj",
   "expectedPackageFiles": [
-    "/Users/Travis/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/Users/Travis/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\TRWoo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\TRWoo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

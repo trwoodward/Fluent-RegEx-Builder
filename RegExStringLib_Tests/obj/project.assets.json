@@ -3489,32 +3489,38 @@
     ]
   },
   "packageFolders": {
-    "/Users/Travis/.nuget/packages/": {}
+    "C:\\Users\\TRWoo\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib_Tests/RegExStringLib_Tests.csproj",
+      "projectUniqueName": "D:\\Files\\RegExBuilder\\Fluent-RegEx-Builder\\RegExStringLib_Tests\\RegExStringLib_Tests.csproj",
       "projectName": "RegExStringLib_Tests",
-      "projectPath": "/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib_Tests/RegExStringLib_Tests.csproj",
-      "packagesPath": "/Users/Travis/.nuget/packages/",
-      "outputPath": "/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib_Tests/obj/",
+      "projectPath": "D:\\Files\\RegExBuilder\\Fluent-RegEx-Builder\\RegExStringLib_Tests\\RegExStringLib_Tests.csproj",
+      "packagesPath": "C:\\Users\\TRWoo\\.nuget\\packages\\",
+      "outputPath": "D:\\Files\\RegExBuilder\\Fluent-RegEx-Builder\\RegExStringLib_Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "/Users/Travis/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\TRWoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/RegExStringLib.csproj": {
-              "projectPath": "/Users/Travis/Documents/RegExBuilder/Fluent-RegEx-Builder/RegExStringLib/RegExStringLib.csproj"
+            "D:\\Files\\RegExBuilder\\Fluent-RegEx-Builder\\RegExStringLib\\RegExStringLib.csproj": {
+              "projectPath": "D:\\Files\\RegExBuilder\\Fluent-RegEx-Builder\\RegExStringLib\\RegExStringLib.csproj"
             }
           }
         }
@@ -3527,7 +3533,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -3556,18 +3561,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
