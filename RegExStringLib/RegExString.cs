@@ -18,6 +18,7 @@ namespace RegExStringLib
         //Conversion operators
         public override string ToString() => currentString;
         public static implicit operator string(RegExString exString) => exString.currentString;
+        public static implicit operator RegExString(string stringExp) => new RegExString(stringExp);
 
         //Core methods
         public static RegExString Matching(RegExString subexpression)
