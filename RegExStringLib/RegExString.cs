@@ -21,17 +21,10 @@ namespace RegExStringLib
         public static implicit operator RegExString(string stringExp) => new RegExString(stringExp);
 
         //Core methods
-        public static RegExString Matching(RegExString subexpression)
-        {
-            //ToDo - correct implementation
-            RegExString expression = new RegExString();
-            expression.currentString += subexpression;
-            return expression;
-        }
+        public static RegExString Matching(RegExString subexpression) => new RegExString(subexpression);
 
         public RegExString Then(RegExString subexpression)
         {
-            //ToDo - correct implementation
             currentString += subexpression;
             return this;
         }
