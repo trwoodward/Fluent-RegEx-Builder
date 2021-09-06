@@ -210,5 +210,218 @@ namespace RegExStringLib_Tests
             //Assert
             Assert.Equal(expectedString, result.ToString());
         }
+
+        [Fact]
+        public void AnyAlphaNumeric_WithinMatching_ReturnsWordChar()
+        {
+            //Arrange
+            //None
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                RegExString.AnyAlphaNumeric()
+                                            );
+
+            //Assert
+            Assert.Equal(@"\w", result.ToString());
+        }
+
+        [Fact]
+        public void AnyAlphaNumeric_WithinThen_ReturnsWordChar()
+        {
+            //Arrange
+            string testString = Guid.NewGuid().ToString();
+            string expectedString = testString + @"\w";
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                testString
+                                            ).Then(
+                                                RegExString.AnyAlphaNumeric()
+                                            );
+
+            //Assert
+            Assert.Equal(expectedString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyNonAlphaNumeric_WithinMatching_ReturnsNonWordChar()
+        {
+            //Arrange
+            //None
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                RegExString.AnyNonAlphaNumeric()
+                                            );
+
+            //Assert
+            Assert.Equal(@"\W", result.ToString());
+        }
+
+        [Fact]
+        public void AnyNonAlphaNumeric_WithinThen_ReturnsNonWordChar()
+        {
+            //Arrange
+            string testString = Guid.NewGuid().ToString();
+            string expectedString = testString + @"\W";
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                testString
+                                            ).Then(
+                                                RegExString.AnyNonAlphaNumeric()
+                                            );
+
+            //Assert
+            Assert.Equal(expectedString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyDigit_WithinMatching_ReturnsDigitChar()
+        {
+            //Arrange
+            //None
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                RegExString.AnyDigit()
+                                            );
+
+            //Assert
+            Assert.Equal(@"\d", result.ToString());
+        }
+
+        [Fact]
+        public void AnyDigit_WithinThen_ReturnsDigitChar()
+        {
+            //Arrange
+            string testString = Guid.NewGuid().ToString();
+            string expectedString = testString + @"\d";
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                testString
+                                            ).Then(
+                                                RegExString.AnyDigit()
+                                            );
+
+            //Assert
+            Assert.Equal(expectedString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyNonDigit_WithinMatching_ReturnsNonDigitChar()
+        {
+            //Arrange
+            //None
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                RegExString.AnyNonDigit()
+                                            );
+
+            //Assert
+            Assert.Equal(@"\D", result.ToString());
+        }
+
+        [Fact]
+        public void AnyNonDigit_WithinThen_ReturnsNonDigitChar()
+        {
+            //Arrange
+            string testString = Guid.NewGuid().ToString();
+            string expectedString = testString + @"\D";
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                testString
+                                            ).Then(
+                                                RegExString.AnyNonDigit()
+                                            );
+
+            //Assert
+            Assert.Equal(expectedString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyWhiteSpace_WithinMatching_ReturnsWhiteSpaceChar()
+        {
+            //Arrange
+            //None
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                RegExString.AnyWhiteSpace()
+                                            );
+
+            //Assert
+            Assert.Equal(@"\s", result.ToString());
+        }
+
+        [Fact]
+        public void AnyWhiteSpace_WithinThen_ReturnsWhiteSpaceChar()
+        {
+            //Arrange
+            string testString = Guid.NewGuid().ToString();
+            string expectedString = testString + @"\s";
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                testString
+                                            ).Then(
+                                                RegExString.AnyWhiteSpace()
+                                            );
+
+            //Assert
+            Assert.Equal(expectedString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyNonWhiteSpace_WithinMatching_ReturnsNonWhiteSpaceChar()
+        {
+            //Arrange
+            //None
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                RegExString.AnyNonWhiteSpace()
+                                            );
+
+            //Assert
+            Assert.Equal(@"\S", result.ToString());
+        }
+
+        [Fact]
+        public void AnyNonWhiteSpace_WithinThen_ReturnsNonWhiteSpaceChar()
+        {
+            //Arrange
+            string testString = Guid.NewGuid().ToString();
+            string expectedString = testString + @"\S";
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                testString
+                                            ).Then(
+                                                RegExString.AnyNonWhiteSpace()
+                                            );
+
+            //Assert
+            Assert.Equal(expectedString, result.ToString());
+        }
+
+        [Fact]
+        public void AnySingleCharacter_WithinMatching_ReturnsWildcardChar()
+        {
+            //Arrange
+            //None
+
+            //Act
+            RegExString result = RegExString.Matching(
+                                                RegExString.AnySingleCharacter()
+                                             );
+            
+            //Assert
+            Assert.Equal("*", result.ToString());
+        }
     }
 }

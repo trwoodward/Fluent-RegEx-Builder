@@ -68,6 +68,11 @@
 - static RegExString RegExString.AnyCharNotIn(params char[] charGroup)
   * Represents an expression matching any character not in a specified set of characters
 - static RegExString RegExString.AnyCharInRange(char first, char last)
+  * Represents an expression matching any character between 'first' and 'last' in the alphabet
+- static RegExString RegExString.AnyWhiteSpace()
+  * Represents an expression matching any white-space character or characters
+- static RegExString RegExString.AnyNonWhiteSpace()
+  * Represents an expression matching any non-white-space character
 
 ### Anchors
 - RegExString RegExString.AtTheStart()

@@ -28,6 +28,16 @@ namespace RegExStringLib
             currentString += subexpression;
             return this;
         }
+
+        //Character classes
+        public static RegExString AnyAlphaNumeric() => new RegExString(@"\w");
+        public static RegExString AnyNonAlphaNumeric() => new RegExString(@"\W");
+        public static RegExString AnyDigit() => new RegExString(@"\d");
+        public static RegExString AnyNonDigit() => new RegExString(@"\D");
+        public static RegExString AnyWhiteSpace() => new RegExString(@"\s");
+        public static RegExString AnyNonWhiteSpace() => new RegExString(@"\S");
+        public static RegExString AnySingleCharacter() => new RegExString("*");
+
         
     }
 }
