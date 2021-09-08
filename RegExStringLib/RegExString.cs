@@ -47,7 +47,16 @@ namespace RegExStringLib
             }
             return new RegExString(charGroup);
         }
+        public static RegExString AnyCharNotIn(char[] charGroup) => AnyCharNotIn(new string(charGroup));
+        public static RegExString AnyCharNotIn(string charGroup)
+        {
+            if (!string.IsNullOrEmpty(charGroup))
+            {
+                return new RegExString("[^" + charGroup + "]");
+            }
+            return new RegExString(charGroup);
+        }
 
-        
+        public static RegExString AnyCharInRange(char first, char last) => new RegExString("[" + first.ToString() + "-" + last.ToString() + "]"); //ToDo - deal with any characters that need to be escaped to match correctly
     }
 }
