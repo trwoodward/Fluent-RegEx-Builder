@@ -64,8 +64,10 @@
 - static RegExString RegExString.AnySingleCharacter()
   * A wildcard representing any single character 
 - static RegExString RegExString.AnyCharIn(params char[] charGroup)
+- static RegExString RegExString.AnyCharIn(string charGroup)
   * Represents an expression matching any character in a specified set of characters
 - static RegExString RegExString.AnyCharNotIn(params char[] charGroup)
+- static RegExString RegExString.AnyCharNotIn(string charGroup)
   * Represents an expression matching any character not in a specified set of characters
 - static RegExString RegExString.AnyCharInRange(char first, char last)
   * Represents an expression matching any character between 'first' and 'last' in the alphabet

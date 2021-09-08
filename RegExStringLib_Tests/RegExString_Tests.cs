@@ -421,7 +421,96 @@ namespace RegExStringLib_Tests
                                              );
             
             //Assert
-            Assert.Equal("*", result.ToString());
+            Assert.Equal(".", result.ToString());
+        }
+
+        [Fact]
+        public void AnyCharInString_WithEmptyString_ReturnsEmptyString()
+        {
+            //Arrange
+            string testString = "";
+
+            //Act
+            RegExString result = RegExString.AnyCharIn(testString);
+
+            //Assert
+            Assert.Equal(testString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyCharInString_WithRandomSingleChar_ReturnsChar()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string testString = alphabet[random.Next(alphabet.Length)].ToString();
+
+            //Act
+            RegExString result = RegExString.AnyCharIn(testString);
+
+            //Assert
+            Assert.Equal(testString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyCharInString_WithRandomString_ReturnsStringInBraces()
+        {
+            //Arrange
+            string charGroup = Guid.NewGuid().ToString();
+            string testString = "[" + charGroup + "]";
+
+            //Act
+            RegExString result = RegExString.AnyCharIn(charGroup);
+
+            //Assert
+            Assert.Equal(testString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyCharInCharArray_WithEmptyString_ReturnsEmptyString()
+        {
+            //Arrange
+            string testString = "";
+            char[] testArray = testString.ToCharArray();
+
+            //Act
+            RegExString result = RegExString.AnyCharIn(testArray);
+
+            //Assert
+            Assert.Equal(testString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyCharInCharArray_WithRandomSingleChar_ReturnsChar()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string testString = alphabet[random.Next(alphabet.Length)].ToString();
+            char[] testArray = testString.ToCharArray();
+
+            //Act
+            RegExString result = RegExString.AnyCharIn(testArray);
+
+            //Assert
+            Assert.Equal(testString, result.ToString());
+        }
+
+        [Fact]
+        public void AnyCharInCharArray_WithRandomString_ReturnsStringInBraces()
+        {
+            //Arrange
+            string charGroup = Guid.NewGuid().ToString();
+            char[] testArray = charGroup.ToCharArray();
+            string testString = "[" + charGroup + "]";
+
+            //Act
+            RegExString result = RegExString.AnyCharIn(testArray);
+
+            //Assert
+            Assert.Equal(testString, result.ToString());
         }
     }
 }

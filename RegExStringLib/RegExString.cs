@@ -21,7 +21,7 @@ namespace RegExStringLib
         public static implicit operator RegExString(string stringExp) => new RegExString(stringExp);
 
         //Core methods
-        public static RegExString Matching(RegExString subexpression) => new RegExString(subexpression);
+        public static RegExString Matching(RegExString subexpression) => new RegExString(subexpression); //ToDo - deal with characters that need to be escaped to match correctly
 
         public RegExString Then(RegExString subexpression)
         {
@@ -36,7 +36,17 @@ namespace RegExStringLib
         public static RegExString AnyNonDigit() => new RegExString(@"\D");
         public static RegExString AnyWhiteSpace() => new RegExString(@"\s");
         public static RegExString AnyNonWhiteSpace() => new RegExString(@"\S");
-        public static RegExString AnySingleCharacter() => new RegExString("*");
+        public static RegExString AnySingleCharacter() => new RegExString(".");
+        public static RegExString AnyCharIn(params char[] charGroup) => AnyCharIn(new string(charGroup));
+        public static RegExString AnyCharIn(string charGroup)
+        {
+            if (charGroup?.Length > 1)
+            {
+                //ToDo - deal with any characters that need to be escaped to match correctly
+                return new RegExString("[" + charGroup + "]");
+            }
+            return new RegExString(charGroup);
+        }
 
         
     }
