@@ -621,5 +621,51 @@ namespace RegExStringLib_Tests
             //Assert
             Assert.Equal(testString, result.ToString());
         }
+
+        [Fact]
+        public void AtTheStart_WithEmptyString_ReturnsEmptyString()
+        {
+            //Arrange
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.AtTheStart().ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void AtTheStart_WithRandomSingleChar_ReturnsThenHatChar()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            string testString = "^" + singleChar;
+
+            //Act
+            string result = expression.AtTheStart().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AtTheStart_WithRandomString_ReturnsHatThenStringInBraces()
+        {
+            //Arrange
+            string randString = Guid.NewGuid().ToString();
+            string testString = "^(" + randString + ")";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.AtTheStart().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
     }
 }
