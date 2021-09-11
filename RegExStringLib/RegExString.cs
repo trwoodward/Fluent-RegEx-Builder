@@ -93,6 +93,10 @@ namespace RegExStringLib
             return this;
         }
 
+        public RegExString AtTheEnd()
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }
