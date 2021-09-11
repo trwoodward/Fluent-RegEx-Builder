@@ -55,7 +55,7 @@ namespace RegExStringLib
             currentString = "(" + currentString + ")";
         }
         
-        private RegExString AddAnchor(string prefix = "", string suffix = "")
+        private RegExString AddModifier(string prefix = "", string suffix = "")
         {
             if (numOfElements > 1)
                 WrapElement();
@@ -93,8 +93,8 @@ namespace RegExStringLib
         public static RegExString AnyCharInRange(char first, char last) => new RegExString("[" + first.ToString() + "-" + last.ToString() + "]"); //ToDo - deal with any characters that need to be escaped to match correctly
 
         //Anchors
-        public RegExString AtTheStart() => AddAnchor("^");
-        public RegExString AtTheEnd() => AddAnchor(suffix: "$");
+        public RegExString AtTheStart() => AddModifier("^");
+        public RegExString AtTheEnd() => AddModifier(suffix: "$");
 
     }
 }
