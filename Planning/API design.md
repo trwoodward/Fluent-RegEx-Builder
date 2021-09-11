@@ -111,8 +111,8 @@
   * Modifies the current sub-expression so it will be matched at least n times, but no more than m times
 
 ### Alternation
-- RegExString RegExString.Or()
-  * Modifies the current expression so that it matches provided the sub-expression to the left of the 'Or()' call or the sub-expression to the right of it matches
+- static RegExString RegExString.OneOf(params RegExString[] subexpressions)
+  * Creates an expression that matches one of the provided the sub-expressions provided as parameters
 
 ### Options
 - RegExString RegExString.CaseInsensitive()

@@ -111,6 +111,26 @@ namespace RegExStringLib
         public RegExString AtLeastNTimes(int n) => AddModifier(suffix: "{" + n + ",}");
         public RegExString BetweenNandMTimes(int n, int m) => AddModifier(suffix: "{" + n + "," + m + "}");
 
+        //Alternation
+        public static RegExString OneOf(params RegExString[] subexpressions)
+        {
+            RegExString expression = new RegExString();
+            int nonEmptyExpressions = 0;
+            foreach (RegExString exp in subexpressions)
+            {
+                if (!string.IsNullOrEmpty(exp.currentString))
+                {
+                    expression.currentString += "|" + exp.currentString;
+                    nonEmptyExpressions++;
+                }
+            }
+            if (!string.IsNullOrEmpty(expression.currentString))
+                expression.currentString = expression.currentString.Remove(0, 1);
+            if (nonEmptyExpressions > 1)
+                expression.WrapElement();
+            return expression;
+        }
+
 
     }
 }
