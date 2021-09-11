@@ -668,7 +668,7 @@ namespace RegExStringLib_Tests
             Assert.Equal(testString, result);
         }
 
-                [Fact]
+        [Fact]
         public void AtTheEnd_WithEmptyString_ReturnsEmptyString()
         {
             //Arrange
@@ -709,6 +709,52 @@ namespace RegExStringLib_Tests
 
             //Act 
             string result = expression.AtTheEnd().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AfterPreviousMatch_WithEmptyString_ReturnsEmptyString()
+        {
+            //Arrange
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.AfterPreviousMatch().ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void AfterPreviousMatch_WithRandomSingleChar_ReturnsThenHatChar()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            string testString = @"\G" + singleChar;
+
+            //Act
+            string result = expression.AfterPreviousMatch().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AfterPreviousMatch_WithRandomString_ReturnsHatThenStringInBraces()
+        {
+            //Arrange
+            string randString = Guid.NewGuid().ToString();
+            string testString = @"\G(" + randString + ")";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.AfterPreviousMatch().ToString();
 
             //Assert
             Assert.Equal(testString, result);

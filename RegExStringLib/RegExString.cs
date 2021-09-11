@@ -95,6 +95,7 @@ namespace RegExStringLib
         //Anchors
         public RegExString AtTheStart() => AddModifier("^");
         public RegExString AtTheEnd() => AddModifier(suffix: "$");
+        public RegExString AfterPreviousMatch() => AddModifier(@"\G");
 
     }
 }
