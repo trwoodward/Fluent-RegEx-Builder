@@ -103,5 +103,14 @@ namespace RegExStringLib
         public RegExString NotAtEndOfWord() => AddModifier(suffix: @"\B");
         public RegExString InMiddleOfWord() => AddModifier(@"\B", @"\B");
 
+        //Quantifiers
+        public RegExString ZeroOrMoreTimes() => AddModifier(suffix: "*");
+        public RegExString AtLeastOnce() => AddModifier(suffix: "+");
+        public RegExString AtMostOnce() => AddModifier(suffix: "?");
+        public RegExString NTimes(int n) => AddModifier(suffix: "{" + n + "}");
+        public RegExString AtLeastNTimes(int n) => AddModifier(suffix: "{" + n + ",}");
+        public RegExString BetweenNandMTimes(int n, int m) => AddModifier(suffix: "{" + n + "," + m + "}");
+
+
     }
 }

@@ -454,7 +454,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AnyCharInString_WithRandomString_ReturnsStringInBraces()
+        public void AnyCharInString_WithRandomString_ReturnsStringInParens()
         {
             //Arrange
             string charGroup = Guid.NewGuid().ToString();
@@ -499,7 +499,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AnyCharInCharArray_WithRandomString_ReturnsStringInBraces()
+        public void AnyCharInCharArray_WithRandomString_ReturnsStringInParens()
         {
             //Arrange
             string charGroup = Guid.NewGuid().ToString();
@@ -527,7 +527,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AnyCharNotInString_WithRandomSingleChar_ReturnsCharInBraces()
+        public void AnyCharNotInString_WithRandomSingleChar_ReturnsCharInParens()
         {
             //Arrange
             Random random = new Random();
@@ -544,7 +544,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AnyCharNotInString_WithRandomString_ReturnsStringInBraces()
+        public void AnyCharNotInString_WithRandomString_ReturnsStringInParens()
         {
             //Arrange
             string charGroup = Guid.NewGuid().ToString();
@@ -572,7 +572,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AnyCharNotInCharArray_WithRandomSingleChar_ReturnsCharInBraces()
+        public void AnyCharNotInCharArray_WithRandomSingleChar_ReturnsCharInParens()
         {
             //Arrange
             Random random = new Random();
@@ -590,7 +590,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AnyCharNotInCharArray_WithRandomString_ReturnsStringInBraces()
+        public void AnyCharNotInCharArray_WithRandomString_ReturnsStringInParens()
         {
             //Arrange
             string charGroup = Guid.NewGuid().ToString();
@@ -605,7 +605,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AnyCharInRange_WithRandomParams_ReturnsParamsInBracesWithHypen()
+        public void AnyCharInRange_WithRandomParams_ReturnsParamsInParensWithHypen()
         {
             //Arrange
             Random random = new Random();
@@ -654,7 +654,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AtTheStart_WithRandomString_ReturnsHatThenStringInBraces()
+        public void AtTheStart_WithRandomString_ReturnsHatThenStringInParens()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -700,7 +700,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AtTheEnd_WithRandomString_ReturnsStringInBracesThenDollar()
+        public void AtTheEnd_WithRandomString_ReturnsStringInParensThenDollar()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -746,7 +746,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AfterPreviousMatch_WithRandomString_ReturnsSlashGThenStringInBraces()
+        public void AfterPreviousMatch_WithRandomString_ReturnsSlashGThenStringInParens()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -792,7 +792,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AtStartOfWord_WithRandomString_ReturnsSlashbThenStringInBraces()
+        public void AtStartOfWord_WithRandomString_ReturnsSlashbThenStringInParens()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -839,7 +839,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AtTheEndOfWord_WithRandomString_ReturnsStringInBracesThenSlashb()
+        public void AtTheEndOfWord_WithRandomString_ReturnsStringInParensThenSlashb()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -885,7 +885,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void AsWholeWord_WithRandomString_ReturnsStringInBracesBetweenSlashbs()
+        public void AsWholeWord_WithRandomString_ReturnsStringInParensBetweenSlashbs()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -931,7 +931,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void NotAtStartofWord_WithRandomString_ReturnsSlashBThenStringInBraces()
+        public void NotAtStartofWord_WithRandomString_ReturnsSlashBThenStringInParens()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -977,7 +977,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void NotAtEndofWord_WithRandomString_ReturnsStringInBracesThenSlashB()
+        public void NotAtEndofWord_WithRandomString_ReturnsStringInParensThenSlashB()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -1023,7 +1023,7 @@ namespace RegExStringLib_Tests
         }
 
         [Fact]
-        public void InMiddleofWord_WithRandomString_ReturnsStringInBracesBetweenSlashBs()
+        public void InMiddleofWord_WithRandomString_ReturnsStringInParensBetweenSlashBs()
         {
             //Arrange
             string randString = Guid.NewGuid().ToString();
@@ -1032,6 +1032,300 @@ namespace RegExStringLib_Tests
 
             //Act 
             string result = expression.InMiddleOfWord().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void ZeroOrMoreTimes_WithEmptyString_ReturnsEmptyString()
+        {
+            //Arrange
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.ZeroOrMoreTimes().ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void ZeroOrMoreTimes_WithRandomSingleChar_ReturnsCharThenStar()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            string testString = singleChar + "*";
+
+            //Act
+            string result = expression.ZeroOrMoreTimes().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void ZeroOrMOreTimes_WithRandomString_ReturnsStringInParensThenStar()
+        {
+            //Arrange
+            string randString = Guid.NewGuid().ToString();
+            string testString = "(" + randString + ")*";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.ZeroOrMoreTimes().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AtLeastOnce_WithEmptyString_ReturnsEmptyString()
+        {
+            //Arrange
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.AtLeastOnce().ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void AtLeastOnce_WithRandomSingleChar_ReturnsCharThenPlus()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            string testString = singleChar + "+";
+
+            //Act
+            string result = expression.AtLeastOnce().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AtLeastOnce_WithRandomString_ReturnsStringInParensThenPlus()
+        {
+            //Arrange
+            string randString = Guid.NewGuid().ToString();
+            string testString = "(" + randString + ")+";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.AtLeastOnce().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AtMostOnce_WithEmptyString_ReturnsEmptyString()
+        {
+            //Arrange
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.AtMostOnce().ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void AtMostOnce_WithRandomSingleChar_ReturnsCharThenQMark()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            string testString = singleChar + "?";
+
+            //Act
+            string result = expression.AtMostOnce().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AtMostOnce_WithRandomString_ReturnsStringInParensThenQMark()
+        {
+            //Arrange
+            string randString = Guid.NewGuid().ToString();
+            string testString = "(" + randString + ")?";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.AtMostOnce().ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+        
+        [Fact]
+        public void NTimes_WithEmptyStringAndRandomInt_ReturnsEmptyString()
+        {
+            //Arrange
+            Random random = new Random();
+            int n = random.Next();
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.NTimes(n).ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void NTimes_WithRandomSingleCharAndRandomInt_ReturnsCharThenNInBraces()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            int n = random.Next();
+            string testString = singleChar + "{" + n + "}";
+
+            //Act
+            string result = expression.NTimes(n).ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void NTimes_WithRandomStringAndRandomInt_ReturnsStringInParensThenNInBraces()
+        {
+            //Arrange
+            Random random = new Random();
+            string randString = Guid.NewGuid().ToString();
+            int n = random.Next();
+            string testString = "(" + randString + "){" + n + "}";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.NTimes(n).ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AtLeastNTimes_WithEmptyStringAndRandomInt_ReturnsEmptyString()
+        {
+            //Arrange
+            Random random = new Random();
+            int n = random.Next();
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.AtLeastNTimes(n).ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void AtLeastNTimes_WithRandomSingleCharAndRandomInt_ReturnsCharThenNCommaInBraces()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            int n = random.Next();
+            string testString = singleChar + "{" + n + ",}";
+
+            //Act
+            string result = expression.AtLeastNTimes(n).ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void AtLeastNTimes_WithRandomStringAndRandomInt_ReturnsStringInParensThenNCommaInBraces()
+        {
+            //Arrange
+            Random random = new Random();
+            string randString = Guid.NewGuid().ToString();
+            int n = random.Next();
+            string testString = "(" + randString + "){" + n + ",}";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.AtLeastNTimes(n).ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void BetweenNandMTimes_WithEmptyStringAndRandomInts_ReturnsEmptyString()
+        {
+            //Arrange
+            Random random = new Random();
+            int n = random.Next();
+            int m = random.Next();
+            RegExString expression = new RegExString();
+
+            //Act
+            string result = expression.BetweenNandMTimes(n, m).ToString();
+
+            //Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void BetweenNandMTimes_WithRandomSingleCharAndRandomInts_ReturnsCharThenNCommaMInBraces()
+        {
+            //Arrange
+            Random random = new Random();
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            alphabet += alphabet.ToLower();
+            string singleChar = alphabet[random.Next(alphabet.Length)].ToString();
+            RegExString expression = RegExString.Matching(singleChar);
+            int n = random.Next();
+            int m = random.Next();
+            string testString = singleChar + "{" + n + "," + m + "}";
+
+            //Act
+            string result = expression.BetweenNandMTimes(n, m).ToString();
+
+            //Assert
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void BetweenNandMTimes_WithRandomStringAndRandomInts_ReturnsStringInParensThenNCommaMInBraces()
+        {
+            //Arrange
+            Random random = new Random();
+            string randString = Guid.NewGuid().ToString();
+            int n = random.Next();
+            int m = random.Next();
+            string testString = "(" + randString + "){" + n + "," + m + "}";
+            RegExString expression = RegExString.Matching(randString);
+
+            //Act 
+            string result = expression.BetweenNandMTimes(n, m).ToString();
 
             //Assert
             Assert.Equal(testString, result);
