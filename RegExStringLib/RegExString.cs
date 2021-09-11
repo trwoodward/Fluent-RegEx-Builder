@@ -54,6 +54,14 @@ namespace RegExStringLib
         {
             currentString = "(" + currentString + ")";
         }
+        
+        private RegExString AddAnchor(string prefix = "", string suffix = "")
+        {
+            if (numOfElements > 1)
+                WrapElement();
+            currentString = string.IsNullOrEmpty(currentString) ? currentString : prefix + currentString + suffix;
+            return this;
+        }
 
         //Character classes
         public static RegExString AnyAlphaNumeric() => new RegExString(@"\w");
@@ -85,21 +93,8 @@ namespace RegExStringLib
         public static RegExString AnyCharInRange(char first, char last) => new RegExString("[" + first.ToString() + "-" + last.ToString() + "]"); //ToDo - deal with any characters that need to be escaped to match correctly
 
         //Anchors
-        public RegExString AtTheStart()
-        {
-            if (numOfElements > 1)
-                WrapElement();
-            currentString = string.IsNullOrEmpty(currentString) ? currentString : "^" + currentString;
-            return this;
-        }
-
-        public RegExString AtTheEnd()
-        {
-            if (numOfElements > 1)
-                WrapElement();
-            currentString = string.IsNullOrEmpty(currentString) ? currentString : currentString + "$";
-            return this;
-        }
+        public RegExString AtTheStart() => AddAnchor("^");
+        public RegExString AtTheEnd() => AddAnchor(suffix: "$");
 
     }
 }
