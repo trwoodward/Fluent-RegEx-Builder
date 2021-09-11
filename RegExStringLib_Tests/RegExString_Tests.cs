@@ -708,7 +708,7 @@ namespace RegExStringLib_Tests
             RegExString expression = RegExString.Matching(randString);
 
             //Act 
-            string result = expression.AtTheStart().ToString();
+            string result = expression.AtTheEnd().ToString();
 
             //Assert
             Assert.Equal(testString, result);

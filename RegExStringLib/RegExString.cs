@@ -95,7 +95,10 @@ namespace RegExStringLib
 
         public RegExString AtTheEnd()
         {
-            throw new NotImplementedException();
+            if (numOfElements > 1)
+                WrapElement();
+            currentString = string.IsNullOrEmpty(currentString) ? currentString : currentString + "$";
+            return this;
         }
 
     }
