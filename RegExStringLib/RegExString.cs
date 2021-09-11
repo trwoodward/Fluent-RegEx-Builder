@@ -96,6 +96,12 @@ namespace RegExStringLib
         public RegExString AtTheStart() => AddModifier("^");
         public RegExString AtTheEnd() => AddModifier(suffix: "$");
         public RegExString AfterPreviousMatch() => AddModifier(@"\G");
+        public RegExString AtStartOfWord() => AddModifier(@"\b");
+        public RegExString AtEndOfWord() => AddModifier(suffix: @"\b");
+        public RegExString AsWholeWord() => AddModifier(@"\b", @"\b");
+        public RegExString NotAtStartOfWord() => AddModifier(@"\B");
+        public RegExString NotAtEndOfWord() => AddModifier(suffix: @"\B");
+        public RegExString InMiddleOfWord() => AddModifier(@"\B", @"\B");
 
     }
 }
