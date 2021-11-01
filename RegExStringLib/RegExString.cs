@@ -7,6 +7,8 @@ namespace RegExStringLib
         //Internal variables
         private string currentString;
         private int numOfElements;
+        private bool caseInsensitive = false;
+        private RegExString parent = null;
 
         //Constructors        
         public RegExString(string matchString, int subElements = 1)
@@ -20,22 +22,28 @@ namespace RegExStringLib
         //Conversion operators
         public override string ToString() => currentString;
         public static implicit operator string(RegExString exString) => exString.currentString;
+        //Literal strings may be used in place of RegExStrings. However, these will always be treated as literals and escaped as such, they will not be treated as regular expression patterns
         public static implicit operator RegExString(string stringExp)
         {
             return new RegExString(stringExp, CalculateNumElements(stringExp));
         }
 
         //Core methods
+        //ToDo - to ensure correct ordering of anchors, quantifiers, and options, we need to track them internally and only apply them when ToString() is called
+        //Note: this means modifying Matching(), Then(), and OneOf() to use ToString to assimilate sub-expressions rather than reading currentString directly
         public static RegExString Matching(RegExString subexpression) => new RegExString(subexpression, subexpression.numOfElements); //ToDo - deal with characters that need to be escaped to match correctly
 
         public RegExString Then(RegExString subexpression)
         {
+            subexpression.parent = this;
             currentString += subexpression;
             numOfElements += subexpression.numOfElements;
             return this;
         }
 
         //Helper methods
+        
+        //For the purposes of determining whether to wrap a collection of elements in parenthesis we only need to know if there is more than one of them 
         private static int CalculateNumElements(string expressionString)
         {
             if (expressionString.Length == 1)
@@ -44,8 +52,7 @@ namespace RegExStringLib
             }
             else if (expressionString.Length > 1)
             {
-                // ToDo - replace with logic that parses the string and determines the actual number of elements
-                // For now, assume that 'Matching' only accepts strings of literals
+                //As above, we treat all sets of expressions > 1 the same.
                 return 2; 
             }
             return 0;
@@ -131,6 +138,11 @@ namespace RegExStringLib
             return expression;
         }
 
-
+        //Options
+        public RegExString IgnoreCase()
+        {
+            caseInsensitive = true;
+            return AddModifier(@"(?i)", @"(?-i)");
+        }
     }
 }
