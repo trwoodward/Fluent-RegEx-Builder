@@ -115,7 +115,7 @@
   * Creates an expression that matches one of the provided the sub-expressions provided as parameters
 
 ### Options
-- RegExString RegExString.CaseInsensitive()
-  * Modifies all subsequent parts of the current expression to make matches case insensitive (Implementation note: If used in a sub-expression it should automatically be reversed at the end of that sub-expression)
-- RegExString RegExString.CaseSensitive()
-  * Modifies all subsequent parts of the current expression ot make matches case senstive (Implementation note: As this is the default, it should only make a change if the current expression is currently case insenstive, including where this has been inherited from the parent expression)
+- RegExString RegExString.IgnoreCase()
+  * Modifies the current expression to make matches case insensitive (Implementation note: If used in a sub-expression it should automatically be reversed at the end of that sub-expression)
+- RegExString RegExString.ForceCaseSensitive()
+  * Overrides any case insensitivity of the parent expression 
