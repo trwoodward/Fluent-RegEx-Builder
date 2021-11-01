@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RegExStringLib
 {
@@ -7,8 +8,9 @@ namespace RegExStringLib
         //Internal variables
         private string currentString;
         private int numOfElements;
+        private bool forceCaseSensitive = false; 
         private bool caseInsensitive = false;
-        private RegExString parent = null;
+        private List<RegExString> childExpressions;
 
         //Constructors        
         public RegExString(string matchString, int subElements = 1)
@@ -31,11 +33,16 @@ namespace RegExStringLib
         //Core methods
         //ToDo - to ensure correct ordering of anchors, quantifiers, and options, we need to track them internally and only apply them when ToString() is called
         //Note: this means modifying Matching(), Then(), and OneOf() to use ToString to assimilate sub-expressions rather than reading currentString directly
-        public static RegExString Matching(RegExString subexpression) => new RegExString(subexpression, subexpression.numOfElements); //ToDo - deal with characters that need to be escaped to match correctly
+        public static RegExString Matching(RegExString subexpression) 
+        {
+            RegExString expression = new RegExString(subexpression, subexpression.numOfElements); //ToDo - deal with characters that need to be escaped to match correctly
+            expression.childExpressions.Add(subexpression);
+            return expression;
+        }
 
         public RegExString Then(RegExString subexpression)
         {
-            subexpression.parent = this;
+            childExpressions.Add(subexpression);
             currentString += subexpression;
             numOfElements += subexpression.numOfElements;
             return this;
@@ -128,6 +135,7 @@ namespace RegExStringLib
                 if (!string.IsNullOrEmpty(exp.currentString))
                 {
                     expression.currentString += "|" + exp.currentString;
+                    expression.childExpressions.Add(exp);
                     nonEmptyExpressions++;
                 }
             }
@@ -142,7 +150,15 @@ namespace RegExStringLib
         public RegExString IgnoreCase()
         {
             caseInsensitive = true;
+            //ToDo: Recursively iterate over children and wrap any which are explicity case sensitive with the reverse modifiers
+            //
             return AddModifier(@"(?i)", @"(?-i)");
+        }
+
+        public RegExString ForceCaseSensitive()
+        {
+            forceCaseSensitive = true;
+            return this;
         }
     }
 }
