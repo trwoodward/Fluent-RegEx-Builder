@@ -17,6 +17,7 @@ namespace RegExStringLib
         {
             currentString = matchString;
             numOfElements = string.IsNullOrEmpty(currentString) ? 0 : subElements;
+            childExpressions = new List<RegExString>();
         }
 
         public RegExString() : this("") {}
