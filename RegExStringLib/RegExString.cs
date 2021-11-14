@@ -25,6 +25,7 @@ namespace RegExStringLib
         //Conversion operators
         public override string ToString() => currentString;
         public static implicit operator string(RegExString exString) => exString.currentString;
+
         //Literal strings may be used in place of RegExStrings. However, these will always be treated as literals and escaped as such, they will not be treated as regular expression patterns
         public static implicit operator RegExString(string stringExp)
         {
