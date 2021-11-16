@@ -35,5 +35,4 @@ namespace RegExStringLib.Extensions
         public static RegExString IgnoreCase(this string str) => RegExString.Matching(str).IgnoreCase();
         public static RegExString ForceCaseSensitive(this string str) => RegExString.Matching(str).ForceCaseSensitive();
     }
-
 }
