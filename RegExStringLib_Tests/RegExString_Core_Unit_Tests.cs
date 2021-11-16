@@ -210,7 +210,5 @@ namespace RegExStringLib_Tests
             //Assert
             Assert.Equal(expectedString, result.ToString());
         }
-
-
     }
 }

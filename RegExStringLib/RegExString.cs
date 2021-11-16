@@ -71,9 +71,9 @@ namespace RegExStringLib
             currentString = "(" + currentString + ")";
         }
         
-        private RegExString AddModifier(string prefix = "", string suffix = "")
+        private RegExString AddModifier(string prefix = "", string suffix = "", bool wrap = true)
         {
-            if (numOfElements > 1)
+            if (numOfElements > 1 && wrap)
                 WrapElement();
             currentString = string.IsNullOrEmpty(currentString) ? currentString : prefix + currentString + suffix;
             return this;
@@ -154,7 +154,7 @@ namespace RegExStringLib
             caseInsensitive = true;
             //ToDo: Recursively iterate over children and wrap any which are explicity case sensitive with the reverse modifiers
             //
-            return AddModifier(@"(?i)", @"(?-i)");
+            return AddModifier(@"(?i)", @"(?-i)", false);
         }
 
         public RegExString ForceCaseSensitive()

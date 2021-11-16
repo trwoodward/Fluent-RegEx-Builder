@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using RegExStringLib;
+using RegExStringLib.Extensions;
 
 namespace RegExStringLib_Tests
 {
@@ -14,7 +15,7 @@ namespace RegExStringLib_Tests
             string expectedString = "(B(AB|A)*D)*";
 
             //Act
-            string result = RegExString.Matching("B")
+            string result = "B"
                             .Then(
                                 RegExString.OneOf("AB", "A")
                                 .ZeroOrMoreTimes()
@@ -34,10 +35,10 @@ namespace RegExStringLib_Tests
             string expectedString = "A(B*|C)*";
 
             //Act
-            string result = RegExString.Matching("A")
+            string result = "A"
                             .Then(
                                 RegExString.OneOf(
-                                    RegExString.Matching("B").ZeroOrMoreTimes(), 
+                                    "B".ZeroOrMoreTimes(), 
                                     "C"
                                 ).ZeroOrMoreTimes()
                             );
