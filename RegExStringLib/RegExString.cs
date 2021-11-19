@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
 namespace RegExStringLib
@@ -15,7 +16,7 @@ namespace RegExStringLib
         //Constructors        
         public RegExString(string matchString, int subElements = 1)
         {
-            currentString = matchString;
+            currentString = Regex.Escape(matchString);
             numOfElements = string.IsNullOrEmpty(currentString) ? 0 : subElements;
             childExpressions = new List<RegExString>();
         }
@@ -33,11 +34,9 @@ namespace RegExStringLib
         }
 
         //Core methods
-        //ToDo - to ensure correct ordering of anchors, quantifiers, and options, we need to track them internally and only apply them when ToString() is called
-        //Note: this means modifying Matching(), Then(), and OneOf() to use ToString to assimilate sub-expressions rather than reading currentString directly
         public static RegExString Matching(RegExString subexpression) 
         {
-            RegExString expression = new RegExString(subexpression, subexpression.numOfElements); //ToDo - deal with characters that need to be escaped to match correctly
+            RegExString expression = new RegExString(subexpression, subexpression.numOfElements); 
             expression.childExpressions.Add(subexpression);
             return expression;
         }
@@ -92,8 +91,8 @@ namespace RegExStringLib
         {
             if (charGroup?.Length > 1)
             {
-                //ToDo - deal with any characters that need to be escaped to match correctly
-                return new RegExString("[" + charGroup + "]");
+                RegExString result = new RegExString(charGroup);
+                return result.AddModifier("[", "]", false);
             }
             return new RegExString(charGroup);
         }
@@ -106,7 +105,11 @@ namespace RegExStringLib
             }
             return new RegExString(charGroup);
         }
-        public static RegExString AnyCharInRange(char first, char last) => new RegExString("[" + first.ToString() + "-" + last.ToString() + "]"); //ToDo - deal with any characters that need to be escaped to match correctly
+        public static RegExString AnyCharInRange(char first, char last)
+        {
+            RegExString result = new RegExString(first.ToString() + "-" + last.ToString()); 
+            return result.AddModifier("[", "]", false);
+        }
 
         //Anchors
         public RegExString AtTheStart() => AddModifier("^");
